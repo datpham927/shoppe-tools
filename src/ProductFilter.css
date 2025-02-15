@@ -1,0 +1,133 @@
+/* Toàn bộ trang */
+#root{
+  width: 100%;
+}
+.main-container {
+  width: 100%;
+  min-height: 100vh;
+  background: #f4f4f4;
+  padding: 2rem;
+  font-family: sans-serif;
+}
+
+/* Tiêu đề chính */
+.heading {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Bố cục 2 cột (responsive) */
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .row {
+    flex-direction: row;
+  }
+}
+
+/* Mỗi cột */
+.col {
+  flex: 1;
+}
+
+/* Card nền trắng */
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Tiêu đề phụ */
+.title {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+/* Nhãn, văn bản */
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.subtitle {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+/* Textarea */
+.textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Input file */
+.file-input {
+  margin-bottom: 1rem;
+}
+
+/* Nhóm nút */
+.button-group {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Nút chung */
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* Nút xanh */
+.btn-blue {
+  background-color: #007bff;
+}
+
+.btn-blue:hover {
+  background-color: #0056b3;
+}
+
+/* Nút xanh lá */
+.btn-green {
+  background-color: #28a745;
+}
+
+.btn-green:hover {
+  background-color: #1e7e34;
+}
+
+/* Khối thông tin, kết quả */
+.info-block,
+.result-block {
+  margin-top: 1rem;
+  background: #fafafa;
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #eee;
+}
+
+/* Danh sách */
+.list {
+  margin-top: 0.5rem;
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.list-item {
+  margin-bottom: 0.25rem;
+}
