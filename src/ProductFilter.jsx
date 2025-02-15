@@ -85,6 +85,24 @@ export default function ProductFilter() {
     document.body.removeChild(a);
   };
 
+  // 3) Nút “Sao chép” cho danh sách đã lọc (JSON)
+  const handleCopyFiltered = () => {
+    // Lấy danh sách cũ từ localStorage
+    const storedData = localStorage.getItem("filtered_products") || "";
+    if (!storedData) {
+      alert("Không có dữ liệu để sao chép!");
+      return;
+    }
+    navigator.clipboard
+      .writeText(storedData)
+      .then(() => {
+        alert("Đã sao chép danh sách đã lọc vào clipboard!");
+      })
+      .catch((err) => {
+        console.error("Copy failed: ", err);
+      });
+  };
+
   // ============================================================
   // ============ PHẦN UPLOAD EXCEL (CỘT PHẢI) ================
   // ============================================================
@@ -108,10 +126,10 @@ export default function ProductFilter() {
   // 2) Tạo link
   const handleGenerateLinks = () => {
     if (excelData.length === 0) return;
-    // Giả sử row[1] là itemId, row đầu là header => slice(1)
+    // Giả sử row[8] là itemId, row đầu là header => slice(1)
     const newLinks = excelData.slice(1).map((row) => {
-      const itemId = row[8]; // cột B
-      return  itemId;
+      const itemId = row[8];
+      return itemId;
     });
     setExcelLinks(newLinks);
   };
@@ -130,6 +148,23 @@ export default function ProductFilter() {
 
     URL.revokeObjectURL(url);
     document.body.removeChild(a);
+  };
+
+  // 4) Nút “Sao chép” cho danh sách Excel
+  const handleCopyExcel = () => {
+    if (excelLinks.length === 0) {
+      alert("Không có link Excel để sao chép!");
+      return;
+    }
+    const content = excelLinks.join("\n");
+    navigator.clipboard
+      .writeText(content)
+      .then(() => {
+        alert("Đã sao chép link Excel vào clipboard!");
+      })
+      .catch((err) => {
+        console.error("Copy failed: ", err);
+      });
   };
 
   // ============================================================
@@ -157,6 +192,10 @@ export default function ProductFilter() {
             </button>
             <button onClick={handleDownload} className="btn btn-green">
               Tải TXT
+            </button>
+            {/* Nút sao chép danh sách đã lọc */}
+            <button onClick={handleCopyFiltered} className="btn btn-gray">
+              Sao chép
             </button>
           </div>
 
@@ -200,9 +239,15 @@ export default function ProductFilter() {
               <p>
                 Đã tạo <strong>{excelLinks.length}</strong> link:
               </p>
-              <button onClick={handleDownloadTxt} className="btn btn-green">
-                Tải TXT
-              </button>
+              <div className="button-group">
+                <button onClick={handleDownloadTxt} className="btn btn-green">
+                  Tải TXT
+                </button>
+                {/* Nút sao chép danh sách Excel */}
+                <button onClick={handleCopyExcel} className="btn btn-gray">
+                  Sao chép
+                </button>
+              </div>
               <ul className="list">
                 {excelLinks.map((link, idx) => (
                   <li key={idx} className="list-item">

@@ -131,3 +131,9 @@
 .list-item {
   margin-bottom: 0.25rem;
 }
+.btn-gray {
+  background-color: #6c757d;
+}
+.btn-gray:hover {
+  background-color: #5a6268;
+}
