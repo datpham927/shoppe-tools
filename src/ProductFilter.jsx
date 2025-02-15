@@ -38,7 +38,7 @@ export default function ProductFilter() {
       const productList = JSON.parse(data)?.data?.list || [];
 
       const newProducts = productList
-        .filter((e) => e.productClicks > 2)
+        .filter((e) => e.productClicks > 0)
         .map((e) => ({
           name: e.title,
           url: `https://affiliate.shopee.vn/offer/product_offer/${e.itemId}`,
