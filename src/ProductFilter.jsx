@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import * as XLSX from "xlsx";
 import "./ProductFilter.css";
 
@@ -36,9 +36,9 @@ export default function ProductFilter() {
   const handleFilter = () => {
     try {
       const productList = JSON.parse(data)?.data?.list || [];
-
+      console.log({ productList });
       const newProducts = productList
-        .filter((e) => e.productClicks > 0)
+        .filter((e) => e.clicks > 0)
         .map((e) => ({
           name: e.title,
           url: `https://affiliate.shopee.vn/offer/product_offer/${e.itemId}`,
@@ -68,7 +68,9 @@ export default function ProductFilter() {
     const oldProducts = storedData ? storedData.split("\n") : [];
 
     const newProducts = filteredList.map((e) => e.url);
-    const updatedProducts = Array.from(new Set([...oldProducts, ...newProducts]));
+    const updatedProducts = Array.from(
+      new Set([...oldProducts, ...newProducts])
+    );
 
     localStorage.setItem("filtered_products", updatedProducts.join("\n"));
 
